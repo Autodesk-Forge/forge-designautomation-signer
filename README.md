@@ -5,9 +5,13 @@
 
 [![License](http://img.shields.io/:license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 
-#Description
+# Description
 
 This is a utility to sign the parts of the workitem request message with the right algorithm and parameters.
+
+## Demonstration
+
+[Video demo](https://github.com/Autodesk-Forge/Das.WorkItemSigner/blob/main/demo/demo.mp4)
 
 # Setup
 
@@ -86,10 +90,6 @@ set CLIENT_SECRET=<<YOUR CLIENT SECRET>>
   .\workitem.ps1
 ```
 
-## Demonstration
-
-[Video demo](https://github.com/Autodesk-Forge/Das.WorkItemSigner/blob/main/demo/demo.mp4)
-
 ## License
 
-This sample is licensed under the terms of the **MIT LICENSE**. Please see the [LICENSE](https://github.com/Autodesk-Forge/Das.WorkItemSigner/blob/main/LICENSE) file for full details.
+This sample is licensed under the terms of the [MIT License](http://opensource.org/licenses/MIT). Please see the [LICENSE](LICENSE) file for full details.
