@@ -73,7 +73,7 @@ set CLIENT_SECRET=<<YOUR CLIENT SECRET>>
 
 ## DEMO
 
-![VideoFile](https://github.com/Autodesk-Forge/Das.WorkItemSigner/blob/main/demo.mkv)
+![VideoFile](https://github.com/Autodesk-Forge/Das.WorkItemSigner/blob/main/demo.mp4)
 
 ## License
 
