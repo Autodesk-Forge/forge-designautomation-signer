@@ -1,17 +1,13 @@
 # Design Automation signer
 
 [![Design-Automation](https://img.shields.io/badge/Design%20Automation-v3-green.svg)](http://developer.autodesk.com/)
-![.NET Core](https://img.shields.io/badge/.NET%20Core-5.0-blue.svg)
+![.NET Core](https://img.shields.io/badge/.NET%20Core-3.1-blue.svg)
 
 [![License](http://img.shields.io/:license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
 
 # Description
 
 This is a utility to sign the parts of the workitem request message with the right algorithm and parameters.
-
-## Demonstration
-
-[Video demo](https://github.com/Autodesk-Forge/Das.WorkItemSigner/blob/main/demo/demo.mp4)
 
 # Setup
 
