@@ -14,6 +14,7 @@ mypublickey.json
 mykey.json
 sign.txt
 .vscode/
+.DS_Store
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
