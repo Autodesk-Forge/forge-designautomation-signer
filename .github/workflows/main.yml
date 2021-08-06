@@ -30,6 +30,9 @@ jobs:
       with:
         languages: ${{ matrix.language }}
    
+    - name: Build
+      run: dotnet build /p:UseSharedCompilation=false
+      
     - name: Perform CodeQL Analysis
       id: CodeQL_analysis
       uses: github/codeql-action/analyze@v1
