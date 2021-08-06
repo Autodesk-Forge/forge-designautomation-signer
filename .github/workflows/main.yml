@@ -38,7 +38,7 @@ jobs:
       uses: github/codeql-action/analyze@v1
     
     - name: Publish
-      if: ${{ github.event_name =='push' && github.ref != 'refs/heads/main' }}
+      #if: ${{ github.event_name =='push' && github.ref == 'refs/heads/main' }}
       run: dotnet msbuild Das.WorkItemSigner.csproj /t:Push
       env:
         NugetApiKey: ${{ secrets.NUGETAPIKEYBYENGOPS }}
