@@ -43,7 +43,7 @@ jobs:
       env:
         NugetApiKey: ${{ secrets.NUGETAPIKEYBYENGOPS }}
     
-    - name: Build Excusable 
+    - name: Build Executable 
       run: dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained true --output ./publish
       
     - name: Create tag
