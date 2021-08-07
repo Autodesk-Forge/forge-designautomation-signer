@@ -50,7 +50,7 @@ jobs:
       id: create_tag
       run: |
         if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-          tag=release-"${{ github.head_ref }}"-$(date +%Y%m%d-%H%M%S)
+          tag=release-main-$(date +%Y%m%d-%H%M%S)
         else
          tag=debug-"${{ github.head_ref }}"-$(date +%Y%m%d-%H%M%S)
         fi
