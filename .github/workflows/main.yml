@@ -31,13 +31,13 @@ jobs:
         languages: ${{ matrix.language }}
    
     - name: Build
-      run: dotnet build /p:UseSharedCompilation=false
+      run: dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained true /p:UseSharedCompilation=false
       
     - name: Perform CodeQL Analysis
       id: CodeQL_analysis
       uses: github/codeql-action/analyze@v1
     
-    - name: Publish
+    - name: Publish to Nuget
       if: ${{ github.event_name =='push' && github.ref == 'refs/heads/main' }}
       run: dotnet msbuild Das.WorkItemSigner.csproj /t:Push
       env:
