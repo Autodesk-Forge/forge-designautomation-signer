@@ -26,6 +26,9 @@ dotnet publish -r win-x64 -c Release -p:PublishSingleFile=true --self-contained 
 `Das.WorkItemSigner.exe` can be found under `.\bin\Release\net5.0\win-x64\publish`
 
 ## Usage
+Download `Das.WorkItemSigner.exe` from [Releases page](https://github.com/Autodesk-Forge/forge-designautomation-signer/releases). 
+
+> **_NOTE:_**  Downloas the stable version of `Das.WorkItemSigner.exe` from the latest release named by `release-main-<date>`; download `Das.WorkItemSigner.exe` for testing from releases named by `debug-<feature branch name>-<date>`.
 
 - Generate a public/private key pair using Das.WorkitemSigner.
 
