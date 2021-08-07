@@ -44,7 +44,7 @@ jobs:
         NugetApiKey: ${{ secrets.NUGETAPIKEYBYENGOPS }}
         
     - name: Zip Excusable
-      run: zip --junk-paths DasWorkItemSigner ./bin/Release/net5.0/win-x64/publish/Das.WorkItemSigner.exe
+      run: zip --junk-paths DasWorkItemSigner ./Demo/demo.mp4
     
     - name: Create Release
       id: create_release
