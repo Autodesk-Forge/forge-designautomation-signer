@@ -31,14 +31,46 @@ jobs:
         languages: ${{ matrix.language }}
    
     - name: Build
-      run: dotnet build /p:UseSharedCompilation=false
+      run: dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained true --output ./publish /p:UseSharedCompilation=false
       
     - name: Perform CodeQL Analysis
       id: CodeQL_analysis
       uses: github/codeql-action/analyze@v1
     
-    - name: Publish
+    - name: Publish to Nuget
       if: ${{ github.event_name =='push' && github.ref == 'refs/heads/main' }}
       run: dotnet msbuild Das.WorkItemSigner.csproj /t:Push
       env:
         NugetApiKey: ${{ secrets.NUGETAPIKEYBYENGOPS }}
+    
+    - name: Create tag
+      id: create_tag
+      run: |
+        if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+          tag=release-"${{ github.head_ref }}"-$(date +%Y%m%d-%H%M%S)
+        else
+         tag=debug-"${{ github.head_ref }}"-$(date +%Y%m%d-%H%M%S)
+        fi
+        echo "::set-output name=tag::$tag"
+        
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ steps.create_tag.outputs.tag }}
+        release_name: ${{ steps.create_tag.outputs.tag }}
+        draft: false
+        prerelease: false
+        
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./publish/Das.WorkItemSigner.exe
+        asset_name: Das.WorkItemSigner.exe
+        asset_content_type: application/octet-stream

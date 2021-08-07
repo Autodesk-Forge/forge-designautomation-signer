@@ -20,21 +20,26 @@ This is a utility to sign the parts of the workitem request message with the rig
 At the folder on the `.csproj`, run the following via command line:
 
 ```bash
-dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained true
+dotnet publish -r win-x64 -c Release -p:PublishSingleFile=true --self-contained true
 ```
 
+`Das.WorkItemSigner.exe` can be found under `.\bin\Release\net5.0\win-x64\publish`
+
 ## Usage
+Download `Das.WorkItemSigner.exe` from [Releases page](https://github.com/Autodesk-Forge/forge-designautomation-signer/releases). 
+
+> **_NOTE:_**  Downloas the stable version of `Das.WorkItemSigner.exe` from the latest release named by `release-main-<date>`; download `Das.WorkItemSigner.exe` for testing from releases named by `debug-<feature branch name>-<date>`.
 
 - Generate a public/private key pair using Das.WorkitemSigner.
 
 ```bash
-dotnet run generate mykey.json
+Das.WorkItemSigner.exe generate mykey.json
 ```
 
 - Export the public key into a json file using Das.WorkItemSigner.
 
 ```bash
-dotnet run export mykey.json mypublickey.json
+Das.WorkItemSigner.exe export mykey.json mypublickey.json
 ```
 
 - Upload public key using PATCH forgeapps/me API (see https://forge.autodesk.com/en/docs/design-automation/v3/reference/http/forgeapps-id-PATCH/). 
@@ -46,7 +51,7 @@ dotnet run export mykey.json mypublickey.json
 - Generate digital signature for the `activityId` that it wants to call using Das.WorkitemSigner
 
 ```bash
-dotnet run sign mykey.json <ForgeAppNickNameOrId>.PlotToPdf+<Alias>
+Das.WorkItemSigner.exe sign mykey.json <ForgeAppNickNameOrId>.PlotToPdf+<Alias>
 ```
 ## Test
 
@@ -79,10 +84,10 @@ set CLIENT_SECRET=<<YOUR CLIENT SECRET>>
 
 - Or you can run `createActivity.ps1`
 ```bash
-  dotnet run generate mykey.json
-  dotnet run export mykey.json mypublickey.json
+  Das.WorkItemSigner.exe generate mykey.json
+  Das.WorkItemSigner.exe export mykey.json mypublickey.json
   .\patchPublicKey.ps1
-  dotnet run sign mykey.json adesk.HelloWorld+prod
+  Das.WorkItemSigner.exe sign mykey.json adesk.HelloWorld+prod
   .\workitem.ps1
 ```
 
