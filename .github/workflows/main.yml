@@ -47,9 +47,9 @@ jobs:
       id: create_tag
       run: |
         if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-          tag=release-$(date+%Y%m%d-%H%M%S)
+          tag=release-$(date +%Y%m%d-%H%M%S)
         else
-          tag=debug-$(date+%Y%m%d-%H%M%S)
+         tag=debug-$(date +%Y%m%d-%H%M%S)
         fi
         echo "::set-output name=tag::$tag"
         
