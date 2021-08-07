@@ -31,7 +31,7 @@ jobs:
         languages: ${{ matrix.language }}
    
     - name: Build
-      run: dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained true --output ./publish /p:UseSharedCompilation=false
+      run: dotnet build /p:UseSharedCompilation=false
       
     - name: Perform CodeQL Analysis
       id: CodeQL_analysis
@@ -43,6 +43,9 @@ jobs:
       env:
         NugetApiKey: ${{ secrets.NUGETAPIKEYBYENGOPS }}
     
+    - name: Build Excusable 
+      run: dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained true --output ./publish
+      
     - name: Create tag
       id: create_tag
       run: |
